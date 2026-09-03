@@ -11,7 +11,7 @@ import net.minecraft.world.level.block.Blocks;
 public class OreScanner {
 
 	// 沒有指定 chunk 範圍時，預設掃描中心 chunk 加上周圍 1 格，也就是 3x3 chunks。
-	private static final int DEFAULT_CHUNK_RADIUS = 1;
+	private static final int DEFAULT_CHUNK_RADIUS = 2;
 
 	// 使用玩家所在位置推算中心 chunk，並掃描預設 3x3 chunks。
 	public List<BlockPos> findDiamondOres(ClientLevel world, BlockPos center) {

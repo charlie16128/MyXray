@@ -21,6 +21,8 @@ public class XrayClient implements ClientModInitializer {
 
 	private final OreRenderer oreRenderer = new OreRenderer();
 
+//	private final DiscordWebhookNotifier discordWebhookNotifier = new DiscordWebhookNotifier();
+
 	// 記住上一次掃描時玩家所在的 chunk，用來判斷是否需要重新掃描與顯示。
 	private boolean hasLastScannedChunk = false;
 	private int lastScannedChunkX = 0;
@@ -66,6 +68,10 @@ public class XrayClient implements ClientModInitializer {
 					);
 
 					if (this.xrayActive && client.level != null) {
+//						this.discordWebhookNotifier.sendXrayEnabled(
+//								client.player.getName().getString(),
+//								client.player.blockPosition()
+//						);
 						this.scanAndDisplayDiamondOres(client);
 					} else {
 						this.resetLastScannedChunk();
@@ -107,9 +113,9 @@ public class XrayClient implements ClientModInitializer {
 		this.hasLastScannedChunk = true;
 		this.oreRenderer.setDiamondOres(diamondOres);
 
-		client.player.sendSystemMessage(
-				Component.literal("掃描到 " + diamondOres.size() + " 顆鑽石礦")
-		);
+//		client.player.sendSystemMessage(
+//				Component.literal("掃描到 " + diamondOres.size() + " 顆鑽石礦")
+//		);
 	}
 
 	private boolean isLastScannedChunk(int chunkX, int chunkZ) {
